@@ -1,0 +1,634 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>android基础控件的使用 // My New Hugo Site</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.55.4" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://zyb1024.github.io/css/main.min.f90f5edd436ec7b74ad05479a05705770306911f721193e7845948fb07fe1335.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="android基础控件的使用"/>
+<meta name="twitter:description" content="控件在屏幕上位置的确定 通常情况下控件在屏幕上确定至少要连接两条线（一条水平，一条垂直） 如下图连接了四条线 辅助线 辅助线的调出： 水平辅助线：进入activity.xml的设计模式之后如下图 为了尽量满足不同屏幕的适配，在做ui的时候应当多使用辅助线，将辅助线调整到屏幕的百分比模式 tips:控件的线可以连接在辅助线上 如果要一个控件处于一条辅助线的中间可以将控件的上下两条线连在一条辅助线上 TextView 普通文本的载体 效果图： plain Text效果图：左右各空出距离连线边界32dp hint可以设置出现的提示（请输入数字） Button 效果图： checkbox 复选框（可以选择多个） 效果图： 复选框水平对齐技巧： 1、同时选中多个复选框 2、对齐 3、串联起来 4、只需要连接其中一个，其它的自动对齐，以为是串联的 switch ImageView 放图片的容器 tips:调整图片大小 如果是做图标的可以调成80dp之后修改比例 调整比例： 一直点击出现左上角斜线 点击斜线： radioGroup radioGroup常和radioButton结合使用可以实现一个单选的效果 默认打对勾：ProgressBar 手机app加载的过渡动画 ： ： 将indeterminate设为true就会无限水平滚动 不将indeterminate设为true可以通过输入框和按钮实现进度的设置例如： SeekBar 类似于进度条可以自由滑动 这种SeekBar有设定好的滑动位置只能滑动到之前设定好的位置 ratingBar 类似于外卖的评分： Demo MainActivity.java
+package com.zyb.uidemo; import androidx.appcompat.app.AppCompatActivity; import android.os.Bundle; import android.text.TextUtils; import android.view.View; import android.widget.Button; import android.widget.CheckBox; import android.widget.CompoundButton; import android.widget.EditText; import android.widget.ImageView; import android.widget.ProgressBar; import android."/>
+
+    <meta property="og:title" content="android基础控件的使用" />
+<meta property="og:description" content="控件在屏幕上位置的确定 通常情况下控件在屏幕上确定至少要连接两条线（一条水平，一条垂直） 如下图连接了四条线 辅助线 辅助线的调出： 水平辅助线：进入activity.xml的设计模式之后如下图 为了尽量满足不同屏幕的适配，在做ui的时候应当多使用辅助线，将辅助线调整到屏幕的百分比模式 tips:控件的线可以连接在辅助线上 如果要一个控件处于一条辅助线的中间可以将控件的上下两条线连在一条辅助线上 TextView 普通文本的载体 效果图： plain Text效果图：左右各空出距离连线边界32dp hint可以设置出现的提示（请输入数字） Button 效果图： checkbox 复选框（可以选择多个） 效果图： 复选框水平对齐技巧： 1、同时选中多个复选框 2、对齐 3、串联起来 4、只需要连接其中一个，其它的自动对齐，以为是串联的 switch ImageView 放图片的容器 tips:调整图片大小 如果是做图标的可以调成80dp之后修改比例 调整比例： 一直点击出现左上角斜线 点击斜线： radioGroup radioGroup常和radioButton结合使用可以实现一个单选的效果 默认打对勾：ProgressBar 手机app加载的过渡动画 ： ： 将indeterminate设为true就会无限水平滚动 不将indeterminate设为true可以通过输入框和按钮实现进度的设置例如： SeekBar 类似于进度条可以自由滑动 这种SeekBar有设定好的滑动位置只能滑动到之前设定好的位置 ratingBar 类似于外卖的评分： Demo MainActivity.java
+package com.zyb.uidemo; import androidx.appcompat.app.AppCompatActivity; import android.os.Bundle; import android.text.TextUtils; import android.view.View; import android.widget.Button; import android.widget.CheckBox; import android.widget.CompoundButton; import android.widget.EditText; import android.widget.ImageView; import android.widget.ProgressBar; import android." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zyb1024.github.io/post/blog/" />
+<meta property="article:published_time" content="2020-02-21T12:01:00&#43;08:00"/>
+<meta property="article:modified_time" content="2020-02-21T12:01:00&#43;08:00"/>
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://zyb1024.github.io/"><img class="app-header-avatar" src="/avatar.jpg" alt="John Doe" /></a>
+      <h1>My New Hugo Site</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula turpis sit amet elit pretium.</p>
+      <div class="app-header-social">
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">android基础控件的使用</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Feb 21, 2020
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          4 min read
+        </div></div>
+    </header>
+    <div class="post-content">
+      <p><h1>控件在屏幕上位置的确定</h1>
+通常情况下控件在屏幕上确定至少要连接两条线（一条水平，一条垂直）
+如下图连接了四条线
+<img src="https://img2018.cnblogs.com/blog/1521179/202002/1521179-20200220145619604-1527355607.png" alt="" /></p>
+
+<p><h1>辅助线</h1>
+辅助线的调出：
+水平辅助线：进入activity.xml的设计模式之后如下图
+<img src="https://img2018.cnblogs.com/blog/1521179/202002/1521179-20200220145223535-1450881730.png" alt="" />
+为了尽量满足不同屏幕的适配，在做ui的时候应当多使用辅助线，将辅助线调整到屏幕的百分比模式
+<img src="https://img2018.cnblogs.com/blog/1521179/202002/1521179-20200220145048257-1197207760.png" alt="" /></p>
+
+<p>tips:控件的线可以连接在辅助线上
+    如果要一个控件处于一条辅助线的中间可以将控件的上下两条线连在一条辅助线上
+<h1>TextView</h1>
+普通文本的载体
+<img src="https://img2018.cnblogs.com/blog/1521179/202002/1521179-20200220152444765-323826434.png" alt="" />
+效果图：
+<img src="https://img2018.cnblogs.com/blog/1521179/202002/1521179-20200220152411908-1543404479.png" alt="" /></p>
+
+<p><h1>plain Text</h1><img src="https://img2018.cnblogs.com/blog/1521179/202002/1521179-20200220155640414-2053184376.png" alt="" />
+效果图：<img src="https://img2018.cnblogs.com/blog/1521179/202002/1521179-20200220155701598-1325558516.png" alt="" />
+左右各空出距离连线边界32dp
+<img src="https://img2018.cnblogs.com/blog/1521179/202002/1521179-20200220155753627-1438092385.png" alt="" />
+hint可以设置出现的提示（请输入数字）
+<img src="https://img2018.cnblogs.com/blog/1521179/202002/1521179-20200220160716599-776388999.png" alt="" /></p>
+
+<p><h1>Button</h1>
+<img src="https://img2018.cnblogs.com/blog/1521179/202002/1521179-20200220150253173-1205959707.png" alt="" />
+效果图：
+<img src="https://img2018.cnblogs.com/blog/1521179/202002/1521179-20200220150331855-1079819589.png" alt="" />
+<h1>checkbox</h1>
+复选框（可以选择多个）
+<img src="https://img2018.cnblogs.com/blog/1521179/202002/1521179-20200220150437798-1159282933.png" alt="" />
+效果图：
+<img src="https://img2018.cnblogs.com/blog/1521179/202002/1521179-20200220150506549-2009186600.png" alt="" />
+复选框水平对齐技巧：
+1、同时选中多个复选框
+<img src="https://img2018.cnblogs.com/blog/1521179/202002/1521179-20200220150728680-1527742169.png" alt="" />
+2、对齐
+<img src="https://img2018.cnblogs.com/blog/1521179/202002/1521179-20200220150850424-1179818096.png" alt="" />
+3、串联起来
+<img src="https://img2018.cnblogs.com/blog/1521179/202002/1521179-20200220150948182-1901703900.png" alt="" />
+4、只需要连接其中一个，其它的自动对齐，以为是串联的
+<img src="https://img2018.cnblogs.com/blog/1521179/202002/1521179-20200220151110974-411953470.png" alt="" /></p>
+
+<p><h1>switch</h1>
+<img src="https://img2018.cnblogs.com/blog/1521179/202002/1521179-20200220155228691-2045079579.png" alt="" />
+<img src="https://img2018.cnblogs.com/blog/1521179/202002/1521179-20200220155252823-191076299.png" alt="" /></p>
+
+<p><h1>ImageView</h1>
+放图片的容器
+tips:调整图片大小
+<img src="https://img2018.cnblogs.com/blog/1521179/202002/1521179-20200220151500339-366813363.png" alt="" />
+如果是做图标的可以调成80dp之后修改比例
+调整比例：
+一直点击出现左上角斜线
+<img src="https://img2018.cnblogs.com/blog/1521179/202002/1521179-20200220151631683-2098220210.png" alt="" />
+点击斜线：
+<img src="https://img2018.cnblogs.com/blog/1521179/202002/1521179-20200220151808799-1722088048.png" alt="" /></p>
+
+<p><h1>radioGroup</h1>
+radioGroup常和radioButton结合使用可以实现一个单选的效果
+<img src="https://img2018.cnblogs.com/blog/1521179/202002/1521179-20200220152135243-1605470464.png" alt="" />
+默认打对勾：<img src="https://img2018.cnblogs.com/blog/1521179/202002/1521179-20200220152206019-557236294.png" alt="" /></p>
+
+<p><h1>ProgressBar</h1>
+手机app加载的过渡动画
+<img src="https://img2018.cnblogs.com/blog/1521179/202002/1521179-20200220154833755-481666917.png" alt="" />：
+<img src="https://img2018.cnblogs.com/blog/1521179/202002/1521179-20200220154612633-543403709.png" alt="" />
+<img src="https://img2018.cnblogs.com/blog/1521179/202002/1521179-20200220154910726-1252794586.png" alt="" />：
+将indeterminate设为true就会无限水平滚动
+<img src="https://img2018.cnblogs.com/blog/1521179/202002/1521179-20200220155013196-1631021848.png" alt="" />
+<img src="https://img2018.cnblogs.com/blog/1521179/202002/1521179-20200220154813824-699196588.png" alt="" />
+不将indeterminate设为true可以通过输入框和按钮实现进度的设置例如：
+<img src="https://img2018.cnblogs.com/blog/1521179/202002/1521179-20200220160915799-231499486.png" alt="" />
+<h1>SeekBar</h1>
+类似于进度条可以自由滑动
+<img src="https://img2018.cnblogs.com/blog/1521179/202002/1521179-20200220161020764-825120126.png" alt="" />
+<img src="https://img2018.cnblogs.com/blog/1521179/202002/1521179-20200220161114634-187570503.png" alt="" />
+这种SeekBar有设定好的滑动位置只能滑动到之前设定好的位置
+<img src="https://img2018.cnblogs.com/blog/1521179/202002/1521179-20200220161200427-1877159540.png" alt="" />
+<h1>ratingBar</h1>
+<img src="https://img2018.cnblogs.com/blog/1521179/202002/1521179-20200220161331307-26069230.png" alt="" />
+类似于外卖的评分：
+<img src="https://img2018.cnblogs.com/blog/1521179/202002/1521179-20200220161420035-131053210.png" alt="" /></p>
+
+<p><h1>Demo</h1>
+MainActivity.java</p>
+
+<pre><code class="language-java">package com.zyb.uidemo;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RadioGroup;
+import android.widget.RatingBar;
+import android.widget.SeekBar;
+import android.widget.Switch;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+
+    TextView showText;
+    Button leftButton,rightButton,confirmButton;
+    Switch aSwitch;
+    ProgressBar progressBar;
+    EditText editText;
+    RadioGroup radioGroup;
+    ImageView imageView;
+    SeekBar seekBar;
+    CheckBox chin,math,eng;
+    String c=&quot;&quot;,m=&quot;&quot;,e=&quot;&quot;;
+    RatingBar ratingBar;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        showText = findViewById(R.id.textView2);
+        leftButton = findViewById(R.id.button);
+        rightButton = findViewById(R.id.button2);
+        confirmButton = findViewById(R.id.button3);
+        aSwitch = findViewById(R.id.switch1);
+        progressBar = findViewById(R.id.progressBar4);
+        editText = findViewById(R.id.editText2);
+        radioGroup = findViewById(R.id.radioGroup);
+        imageView = findViewById(R.id.imageView);
+        seekBar = findViewById(R.id.seekBar3);
+        chin = findViewById(R.id.checkBox4);
+        math = findViewById(R.id.checkBox5);
+        eng = findViewById(R.id.checkBox6);
+        ratingBar = findViewById(R.id.ratingBar);
+
+        leftButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showText.setText(R.string.leftButton);
+            }
+        });
+
+        rightButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showText.setText(R.string.rightButton);
+            }
+        });
+
+        aSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    showText.setText(R.string.on);
+                }else{
+                    showText.setText(R.string.off);
+                }
+            }
+        });
+
+        confirmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String numText=editText.getText().toString();
+                if(TextUtils.isEmpty(numText)){
+                    numText = &quot;0&quot;;
+                }else if(!TextUtils.isDigitsOnly(numText)){
+                    showText.setText(R.string.errorinput);
+                    return;
+                }
+                progressBar.setProgress(Integer.valueOf(numText));
+                showText.setText(numText);
+            }
+        });
+
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if(checkedId==R.id.radioButton3){
+                    imageView.setImageResource(R.drawable.android);
+                }else{
+                    imageView.setImageResource(R.drawable.apple);
+                }
+            }
+        });
+
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                showText.setText(progress+&quot;&quot;);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        chin.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    c = &quot;语文&quot;;
+                }else{
+                    c = &quot;&quot;;
+                }showText.setText(c+m+e);
+            }
+
+        });
+
+        eng.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    e = &quot;英语&quot;;
+                }else{
+                    e = &quot;&quot;;
+                }showText.setText(c+m+e);
+            }
+
+        });
+
+        math.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    m = &quot;数学&quot;;
+                }else{
+                    m = &quot;&quot;;
+                }showText.setText(c+m+e);
+            }
+
+        });
+
+        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                Toast.makeText(getApplicationContext(),rating+&quot;星评价&quot;,Toast.LENGTH_SHORT);
+            }
+        });
+
+
+    }
+}
+
+
+</code></pre>
+
+<p>activity_main.xml:</p>
+
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;androidx.constraintlayout.widget.ConstraintLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    tools:context=&quot;.MainActivity&quot;&gt;
+
+    &lt;RadioGroup
+        android:id=&quot;@+id/radioGroup&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        app:layout_constraintBottom_toTopOf=&quot;@+id/guideline10&quot;
+        app:layout_constraintEnd_toStartOf=&quot;@+id/guideline5&quot;
+        app:layout_constraintStart_toStartOf=&quot;parent&quot;
+        app:layout_constraintTop_toTopOf=&quot;@+id/guideline10&quot;&gt;
+
+        &lt;RadioButton
+            android:id=&quot;@+id/radioButton3&quot;
+            android:layout_width=&quot;match_parent&quot;
+            android:layout_height=&quot;wrap_content&quot;
+            android:checked=&quot;true&quot;
+            android:text=&quot;@string/radiobutton1&quot; /&gt;
+
+        &lt;RadioButton
+            android:id=&quot;@+id/radioButton4&quot;
+            android:layout_width=&quot;match_parent&quot;
+            android:layout_height=&quot;wrap_content&quot;
+            android:text=&quot;@string/radiobutton2&quot; /&gt;
+    &lt;/RadioGroup&gt;
+
+    &lt;androidx.constraintlayout.widget.Guideline
+        android:id=&quot;@+id/guideline6&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:orientation=&quot;horizontal&quot;
+        app:layout_constraintGuide_percent=&quot;0.24&quot; /&gt;
+
+    &lt;androidx.constraintlayout.widget.Guideline
+        android:id=&quot;@+id/guideline4&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:orientation=&quot;horizontal&quot;
+        app:layout_constraintGuide_percent=&quot;0.15&quot; /&gt;
+
+    &lt;androidx.constraintlayout.widget.Guideline
+        android:id=&quot;@+id/guideline3&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:orientation=&quot;horizontal&quot;
+        app:layout_constraintGuide_percent=&quot;0.04&quot; /&gt;
+
+    &lt;TextView
+        android:id=&quot;@+id/textView2&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;@string/show_operate&quot;
+        android:textSize=&quot;30sp&quot;
+        app:layout_constraintEnd_toEndOf=&quot;parent&quot;
+        app:layout_constraintStart_toStartOf=&quot;parent&quot;
+        app:layout_constraintTop_toTopOf=&quot;@+id/guideline3&quot; /&gt;
+
+    &lt;androidx.constraintlayout.widget.Guideline
+        android:id=&quot;@+id/guideline5&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:orientation=&quot;vertical&quot;
+        app:layout_constraintGuide_percent=&quot;0.5&quot; /&gt;
+
+    &lt;Button
+        android:id=&quot;@+id/button&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;@string/leftButton&quot;
+        app:layout_constraintBottom_toTopOf=&quot;@+id/guideline4&quot;
+        app:layout_constraintEnd_toStartOf=&quot;@+id/guideline5&quot;
+        app:layout_constraintStart_toStartOf=&quot;parent&quot;
+        app:layout_constraintTop_toTopOf=&quot;@+id/guideline4&quot; /&gt;
+
+    &lt;Button
+        android:id=&quot;@+id/button2&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;@string/rightButton&quot;
+        app:layout_constraintBottom_toTopOf=&quot;@+id/guideline4&quot;
+        app:layout_constraintEnd_toEndOf=&quot;parent&quot;
+        app:layout_constraintStart_toStartOf=&quot;@+id/guideline5&quot;
+        app:layout_constraintTop_toTopOf=&quot;@+id/guideline4&quot; /&gt;
+
+    &lt;Switch
+        android:id=&quot;@+id/switch1&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;@string/on_off&quot;
+        app:layout_constraintBottom_toTopOf=&quot;@+id/guideline6&quot;
+        app:layout_constraintEnd_toEndOf=&quot;parent&quot;
+        app:layout_constraintStart_toStartOf=&quot;parent&quot;
+        app:layout_constraintTop_toTopOf=&quot;@+id/guideline6&quot; /&gt;
+
+    &lt;androidx.constraintlayout.widget.Guideline
+        android:id=&quot;@+id/guideline7&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:orientation=&quot;horizontal&quot;
+        app:layout_constraintGuide_percent=&quot;0.31&quot; /&gt;
+
+    &lt;ProgressBar
+        android:id=&quot;@+id/progressBar&quot;
+        style=&quot;?android:attr/progressBarStyle&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        app:layout_constraintBottom_toTopOf=&quot;@+id/guideline7&quot;
+        app:layout_constraintEnd_toStartOf=&quot;@+id/guideline5&quot;
+        app:layout_constraintStart_toStartOf=&quot;parent&quot;
+        app:layout_constraintTop_toTopOf=&quot;@+id/guideline7&quot; /&gt;
+
+    &lt;ProgressBar
+        android:id=&quot;@+id/progressBar3&quot;
+        style=&quot;?android:attr/progressBarStyleHorizontal&quot;
+        android:layout_width=&quot;0dp&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:indeterminate=&quot;true&quot;
+        app:layout_constraintBottom_toTopOf=&quot;@+id/guideline7&quot;
+        app:layout_constraintEnd_toEndOf=&quot;parent&quot;
+        app:layout_constraintStart_toStartOf=&quot;@+id/guideline5&quot;
+        app:layout_constraintTop_toTopOf=&quot;@+id/guideline7&quot; /&gt;
+
+    &lt;androidx.constraintlayout.widget.Guideline
+        android:id=&quot;@+id/guideline8&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:orientation=&quot;horizontal&quot;
+        app:layout_constraintGuide_percent=&quot;0.4&quot; /&gt;
+
+    &lt;ProgressBar
+        android:id=&quot;@+id/progressBar4&quot;
+        style=&quot;?android:attr/progressBarStyleHorizontal&quot;
+        android:layout_width=&quot;0dp&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        app:layout_constraintBottom_toTopOf=&quot;@+id/guideline8&quot;
+        app:layout_constraintEnd_toEndOf=&quot;parent&quot;
+        app:layout_constraintHorizontal_bias=&quot;0.498&quot;
+        app:layout_constraintStart_toStartOf=&quot;parent&quot;
+        app:layout_constraintTop_toTopOf=&quot;@+id/guideline8&quot;
+        app:layout_constraintVertical_bias=&quot;0.375&quot; /&gt;
+
+    &lt;androidx.constraintlayout.widget.Guideline
+        android:id=&quot;@+id/guideline9&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:orientation=&quot;horizontal&quot;
+        app:layout_constraintGuide_percent=&quot;0.47&quot; /&gt;
+
+    &lt;EditText
+        android:id=&quot;@+id/editText2&quot;
+        android:layout_width=&quot;0dp&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:layout_marginStart=&quot;32dp&quot;
+        android:layout_marginEnd=&quot;32dp&quot;
+        android:autofillHints=&quot;&quot;
+        android:ems=&quot;10&quot;
+        android:hint=&quot;@string/input_num&quot;
+        android:inputType=&quot;number&quot;
+        app:layout_constraintBottom_toTopOf=&quot;@+id/guideline9&quot;
+        app:layout_constraintEnd_toStartOf=&quot;@+id/guideline5&quot;
+        app:layout_constraintStart_toStartOf=&quot;parent&quot;
+        app:layout_constraintTop_toTopOf=&quot;@+id/guideline9&quot;
+        tools:targetApi=&quot;o&quot; /&gt;
+
+    &lt;Button
+        android:id=&quot;@+id/button3&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;@string/ensureButton&quot;
+        app:layout_constraintBottom_toTopOf=&quot;@+id/guideline9&quot;
+        app:layout_constraintEnd_toEndOf=&quot;parent&quot;
+        app:layout_constraintStart_toStartOf=&quot;@+id/guideline5&quot;
+        app:layout_constraintTop_toTopOf=&quot;@+id/guideline9&quot; /&gt;
+
+    &lt;androidx.constraintlayout.widget.Guideline
+        android:id=&quot;@+id/guideline10&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:orientation=&quot;horizontal&quot;
+        app:layout_constraintGuide_percent=&quot;0.59&quot; /&gt;
+
+    &lt;ImageView
+        android:id=&quot;@+id/imageView&quot;
+        android:layout_width=&quot;0dp&quot;
+        android:layout_height=&quot;80dp&quot;
+        android:contentDescription=&quot;@string/image_value&quot;
+        app:layout_constraintBottom_toTopOf=&quot;@+id/guideline10&quot;
+        app:layout_constraintDimensionRatio=&quot;w,1:1&quot;
+        app:layout_constraintEnd_toEndOf=&quot;parent&quot;
+        app:layout_constraintStart_toStartOf=&quot;@+id/guideline5&quot;
+        app:layout_constraintTop_toTopOf=&quot;@+id/guideline10&quot;
+        app:srcCompat=&quot;@drawable/android&quot; /&gt;
+
+    &lt;androidx.constraintlayout.widget.Guideline
+        android:id=&quot;@+id/guideline11&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:orientation=&quot;horizontal&quot;
+        app:layout_constraintGuide_percent=&quot;0.73&quot; /&gt;
+
+    &lt;CheckBox
+        android:id=&quot;@+id/checkBox4&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;@string/chineseCheckbox&quot;
+        app:layout_constraintBottom_toTopOf=&quot;@+id/guideline11&quot;
+        app:layout_constraintEnd_toStartOf=&quot;@+id/checkBox5&quot;
+        app:layout_constraintHorizontal_bias=&quot;0.5&quot;
+        app:layout_constraintStart_toStartOf=&quot;parent&quot;
+        app:layout_constraintTop_toTopOf=&quot;@+id/guideline11&quot; /&gt;
+
+    &lt;CheckBox
+        android:id=&quot;@+id/checkBox5&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;@string/mathCheckBox&quot;
+        app:layout_constraintBottom_toBottomOf=&quot;@+id/checkBox4&quot;
+        app:layout_constraintEnd_toStartOf=&quot;@+id/checkBox6&quot;
+        app:layout_constraintHorizontal_bias=&quot;0.5&quot;
+        app:layout_constraintStart_toEndOf=&quot;@+id/checkBox4&quot;
+        app:layout_constraintTop_toTopOf=&quot;@+id/checkBox4&quot; /&gt;
+
+    &lt;CheckBox
+        android:id=&quot;@+id/checkBox6&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;@string/englishCheckBox&quot;
+        app:layout_constraintBottom_toBottomOf=&quot;@+id/checkBox5&quot;
+        app:layout_constraintEnd_toEndOf=&quot;parent&quot;
+        app:layout_constraintHorizontal_bias=&quot;0.5&quot;
+        app:layout_constraintStart_toEndOf=&quot;@+id/checkBox5&quot;
+        app:layout_constraintTop_toTopOf=&quot;@+id/checkBox5&quot; /&gt;
+
+    &lt;androidx.constraintlayout.widget.Guideline
+        android:id=&quot;@+id/guideline12&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:orientation=&quot;horizontal&quot;
+        app:layout_constraintGuide_percent=&quot;0.9&quot; /&gt;
+
+    &lt;RatingBar
+        android:id=&quot;@+id/ratingBar&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        app:layout_constraintBottom_toTopOf=&quot;@+id/guideline12&quot;
+        app:layout_constraintEnd_toEndOf=&quot;parent&quot;
+        app:layout_constraintHorizontal_bias=&quot;0.497&quot;
+        app:layout_constraintStart_toStartOf=&quot;parent&quot;
+        app:layout_constraintTop_toTopOf=&quot;@+id/guideline12&quot;
+        app:layout_constraintVertical_bias=&quot;0.0&quot; /&gt;
+
+    &lt;androidx.constraintlayout.widget.Guideline
+        android:id=&quot;@+id/guideline13&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:orientation=&quot;horizontal&quot;
+        app:layout_constraintGuide_percent=&quot;0.82&quot; /&gt;
+
+    &lt;SeekBar
+        android:id=&quot;@+id/seekBar3&quot;
+        android:layout_width=&quot;0dp&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        app:layout_constraintBottom_toTopOf=&quot;@+id/guideline13&quot;
+        app:layout_constraintEnd_toEndOf=&quot;parent&quot;
+        app:layout_constraintStart_toStartOf=&quot;parent&quot;
+        app:layout_constraintTop_toTopOf=&quot;@+id/guideline13&quot; /&gt;
+
+&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;
+</code></pre>
+
+<p>strings.xml</p>
+
+<pre><code class="language-xml">&lt;resources&gt;
+    &lt;string name=&quot;app_name&quot;&gt;UiDemo&lt;/string&gt;
+    &lt;string name=&quot;show_operate&quot;&gt;初始&lt;/string&gt;
+    &lt;string name=&quot;leftButton&quot;&gt;左边&lt;/string&gt;
+    &lt;string name=&quot;rightButton&quot;&gt;右边&lt;/string&gt;
+    &lt;string name=&quot;on_off&quot;&gt;开关&lt;/string&gt;
+    &lt;string name=&quot;on&quot;&gt;开&lt;/string&gt;
+    &lt;string name=&quot;off&quot;&gt;关&lt;/string&gt;
+    &lt;string name=&quot;errorinput&quot;&gt;无效输入&lt;/string&gt;
+    &lt;string name=&quot;input_num&quot;&gt;请输入数字&lt;/string&gt;
+    &lt;string name=&quot;ensureButton&quot;&gt;确定&lt;/string&gt;
+    &lt;string name=&quot;radiobutton1&quot;&gt;android&lt;/string&gt;
+    &lt;string name=&quot;radiobutton2&quot;&gt;apple&lt;/string&gt;
+    &lt;string name=&quot;chineseCheckbox&quot;&gt;语文&lt;/string&gt;
+    &lt;string name=&quot;mathCheckBox&quot;&gt;数学&lt;/string&gt;
+    &lt;string name=&quot;englishCheckBox&quot;&gt;英语&lt;/string&gt;
+    &lt;string name=&quot;image_value&quot;&gt;image_value&lt;/string&gt;
+
+&lt;/resources&gt;
+
+</code></pre>
+
+<p>效果图：
+<img src="https://img2018.cnblogs.com/blog/1521179/202002/1521179-20200220161624927-1046950228.png" alt="" />
+实机运行：
+<img src="https://img2018.cnblogs.com/blog/1521179/202002/1521179-20200220162620005-203246769.png" alt="" /></p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

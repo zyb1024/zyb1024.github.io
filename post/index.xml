@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on My New Hugo Site</title>
+    <link>https://zyb1024.github.io/post/</link>
+    <description>Recent content in Posts on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 21 Feb 2020 12:01:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://zyb1024.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>android基础控件的使用</title>
+      <link>https://zyb1024.github.io/post/blog/</link>
+      <pubDate>Fri, 21 Feb 2020 12:01:00 +0800</pubDate>
+      
+      <guid>https://zyb1024.github.io/post/blog/</guid>
+      <description>控件在屏幕上位置的确定 通常情况下控件在屏幕上确定至少要连接两条线（一条水平，一条垂直） 如下图连接了四条线 辅助线 辅助线的调出： 水平辅助线：进入activity.xml的设计模式之后如下图 为了尽量满足不同屏幕的适配，在做ui的时候应当多使用辅助线，将辅助线调整到屏幕的百分比模式 tips:控件的线可以连接在辅助线上 如果要一个控件处于一条辅助线的中间可以将控件的上下两条线连在一条辅助线上 TextView 普通文本的载体 效果图： plain Text效果图：左右各空出距离连线边界32dp hint可以设置出现的提示（请输入数字） Button 效果图： checkbox 复选框（可以选择多个） 效果图： 复选框水平对齐技巧： 1、同时选中多个复选框 2、对齐 3、串联起来 4、只需要连接其中一个，其它的自动对齐，以为是串联的 switch ImageView 放图片的容器 tips:调整图片大小 如果是做图标的可以调成80dp之后修改比例 调整比例： 一直点击出现左上角斜线 点击斜线： radioGroup radioGroup常和radioButton结合使用可以实现一个单选的效果 默认打对勾：ProgressBar 手机app加载的过渡动画 ： ： 将indeterminate设为true就会无限水平滚动 不将indeterminate设为true可以通过输入框和按钮实现进度的设置例如： SeekBar 类似于进度条可以自由滑动 这种SeekBar有设定好的滑动位置只能滑动到之前设定好的位置 ratingBar 类似于外卖的评分： Demo MainActivity.java
+package com.zyb.uidemo; import androidx.appcompat.app.AppCompatActivity; import android.os.Bundle; import android.text.TextUtils; import android.view.View; import android.widget.Button; import android.widget.CheckBox; import android.widget.CompoundButton; import android.widget.EditText; import android.widget.ImageView; import android.widget.ProgressBar; import android.</description>
+    </item>
+    
+  </channel>
+</rss>
