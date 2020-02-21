@@ -3,29 +3,34 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://zyb1024.github.io/</loc>
-    <lastmod>2020-02-21T12:01:00+08:00</lastmod>
+    <loc>https://zyb024.github.io/</loc>
+    <lastmod>2020-02-21T12:30:21+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://zyb1024.github.io/post/</loc>
-    <lastmod>2020-02-21T12:01:00+08:00</lastmod>
+    <loc>https://zyb024.github.io/post/</loc>
+    <lastmod>2020-02-21T12:30:21+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://zyb1024.github.io/post/blog/</loc>
+    <loc>https://zyb024.github.io/post/blog2/</loc>
+    <lastmod>2020-02-21T12:30:21+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zyb024.github.io/post/blog/</loc>
     <lastmod>2020-02-21T12:01:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://zyb1024.github.io/categories/</loc>
+    <loc>https://zyb024.github.io/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://zyb1024.github.io/tags/</loc>
+    <loc>https://zyb024.github.io/tags/</loc>
     <priority>0</priority>
   </url>
   
